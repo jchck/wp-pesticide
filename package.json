@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/jchck/wp-pesticide/issues"
   },
-  "homepage": "https://github.com/jchck/wp-pesticide#readme"
+  "homepage": "https://github.com/jchck/wp-pesticide#readme",
+  "dependencies": {
+    "pesticide": "^1.3.1"
+  }
 }

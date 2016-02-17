@@ -1,0 +1,25 @@
+{
+  "name": "wp-pesticide",
+  "version": "0.0.0",
+  "description": "Quickly add Pesticide.css to your WordPress theme for faster CSS debugging",
+  "main": "wp-pesticide.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jchck@github.com/jchck/wp-pesticide.git"
+  },
+  "keywords": [
+    "css",
+    "debugging",
+    "wordpress",
+    "plugin"
+  ],
+  "author": "jchck <hey@justinchick.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jchck/wp-pesticide/issues"
+  },
+  "homepage": "https://github.com/jchck/wp-pesticide#readme"
+}

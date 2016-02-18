@@ -41,6 +41,12 @@ function depth(){
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\outline');
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\depth');
 
+/**
+ *
+ * Construct the admin page
+ * @uses https://developer.wordpress.org/reference/functions/add_management_page
+ *
+ */
 function build_page(){
 	add_management_page( 'WP Pesticide', 'WP Pesticide', 'manage_options', 'wp-pesticide', __NAMESPACE__ . '\\build_page' );
 }

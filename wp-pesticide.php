@@ -40,3 +40,8 @@ function depth(){
  */
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\outline');
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\depth');
+
+function build_page(){
+	add_management_page( 'WP Pesticide', 'WP Pesticide', 'manage_options', 'wp-pesticide', __NAMESPACE__ . '\\build_page' );
+}
+add_action( 'admin_menu', __NAMESPACE__ . '\\build_page' );

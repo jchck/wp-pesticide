@@ -22,7 +22,7 @@ function pesticide_options(){
 	 * @uses http://codex.wordpress.org/Function_Reference/add_settings_section
 	 *
 	 */
-	add_settings_section( 'setting_section_id', 'WP Pesticide', __NAMESPACE__ . '\\description', 'sandbox_theme_display_options' );
+	add_settings_section( 'setting_section_id', '', '', 'sandbox_theme_display_options' );
 
 	/**
 	 *
@@ -33,7 +33,7 @@ function pesticide_options(){
 	add_settings_field( 'pesticide_outline', 'Add Outlining', __NAMESPACE__ . '\\outline', 'sandbox_theme_display_options', 'setting_section_id', array(
 		'This is inside the array'
 	) );
-	add_settings_field( 'pesticide_depth', 'Setting Title B', __NAMESPACE__ . '\\depth', 'sandbox_theme_display_options', 'setting_section_id', array(
+	add_settings_field( 'pesticide_depth', 'Add Depth', __NAMESPACE__ . '\\depth', 'sandbox_theme_display_options', 'setting_section_id', array(
 		'This is inside the array'
 	) );
 
@@ -54,15 +54,6 @@ function pesticide_options(){
  */
 add_action( 'admin_init', __NAMESPACE__ . '\\pesticide_options' );
 
-/**
- *
- * This function is called in add_settings_section above and is how we add a setting description to the options page
- * @uses http://codex.wordpress.org/Function_Reference/add_settings_section
- *
- */
-function description(){
-	echo '<p>Lorem ipsum Fugiat labore sit cupidatat Excepteur dolor tempor nisi sit nisi in ex ea dolore laborum quis enim incididunt cupidatat dolor exercitation ea dolore anim voluptate mollit dolore nostrud ullamco et sed Ut.</p>';
-}
 
 /**
  *
@@ -72,13 +63,21 @@ function description(){
  *
  */
 function outline( $args ){
-	$html = '<input type="checkbox" id="pesticide_outline" name="pesticide_outline" value="1"' . checked(1, get_option('pesticide_outline'), false) . '/>';
-	$html .= '<label for="pesticide_outline"> '  . $args[0] . '</label>';
+	$options = get_option( 'sandbox_theme_display_options' );
+
+	$html = '<input type="checkbox" id="pesticide_outline" name="sandbox_theme_display_options[pesticide_outline]" value="1" ' . checked(1, $options['pesticide_outline'], false) . '/>';
+
+	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
+
 	echo $html;
 }
 
 function depth( $args ){
-	$html = '<input type="checkbox" id="pesticide_depth" name="pesticide_depth" value="1"' . checked(1, get_option('pesticide_depth'), false) . '/>';
-	$html .= '<label for="pesticide_depth"> '  . $args[0] . '</label>';
+	$options = get_option( 'sandbox_theme_display_options' );
+
+	$html = '<input type="checkbox" id="pesticide_depth" name="sandbox_theme_display_options[pesticide_depth]" value="1" ' . checked(1, $options['pesticide_depth'], false) . '/>';
+
+	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
+
 	echo $html;
 }

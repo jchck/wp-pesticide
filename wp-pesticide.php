@@ -18,5 +18,11 @@ License URI: https://opensource.org/licenses/MIT
  */
 namespace jchck\pesticide;
 
+/**
+ *
+ * Required functions are called below
+ * @uses http://php.net/manual/en/function.require-once.php
+ *
+ */
 require_once __DIR__ . '/lib/options.php';
 require_once __DIR__ . '/lib/styles.php';

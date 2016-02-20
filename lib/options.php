@@ -12,13 +12,17 @@ namespace jchck\pesticide\options;
 
 function pesticide_options(){
 
+	if ( false == get_option( 'sandbox_theme_display_options' )) {
+		add_option( 'sandbox_theme_display_options' );
+	}
+
 	/**
 	 *
 	 * First, we register a section which the settins will live in
 	 * @uses http://codex.wordpress.org/Function_Reference/add_settings_section
 	 *
 	 */
-	add_settings_section( 'setting_section_id', 'WP Pesticide', __NAMESPACE__ . '\\description', 'general' );
+	add_settings_section( 'setting_section_id', 'WP Pesticide', __NAMESPACE__ . '\\description', 'sandbox_theme_display_options' );
 
 	/**
 	 *
@@ -26,10 +30,10 @@ function pesticide_options(){
 	 * @uses https://developer.wordpress.org/reference/functions/add_settings_field
 	 *
 	 */
-	add_settings_field( 'pesticide_outline', 'Add Outlining', __NAMESPACE__ . '\\outline', 'general', 'setting_section_id', array(
+	add_settings_field( 'pesticide_outline', 'Add Outlining', __NAMESPACE__ . '\\outline', 'sandbox_theme_display_options', 'setting_section_id', array(
 		'This is inside the array'
 	) );
-	add_settings_field( 'pesticide_depth', 'Setting Title B', __NAMESPACE__ . '\\depth', 'general', 'setting_section_id', array(
+	add_settings_field( 'pesticide_depth', 'Setting Title B', __NAMESPACE__ . '\\depth', 'sandbox_theme_display_options', 'setting_section_id', array(
 		'This is inside the array'
 	) );
 
@@ -39,8 +43,7 @@ function pesticide_options(){
 	 * @uses https://developer.wordpress.org/reference/functions/register_setting
 	 *
 	 */
-	register_setting( 'general', 'pesticide_outline' );
-	register_setting( 'general', 'pesticide_depth' );	
+	register_setting( 'sandbox_theme_display_options', 'sandbox_theme_display_options' );	
 }
 
 /**

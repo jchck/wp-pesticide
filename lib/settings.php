@@ -2,6 +2,14 @@
 
 namespace jchck\pesticide\settings;
 
+function default_display(){
+	$defaults = array(
+		'pesticide_outline' => '',
+		'pesticide_depth'	=> ''
+	);
+	return apply_filters( 'default_display', $defaults );
+}
+
 /**
  *
  * This is where we build our options via the settings API
@@ -13,7 +21,7 @@ namespace jchck\pesticide\settings;
 function pesticide_options(){
 
 	if ( false == get_option( 'wp_pesticide_settings' )) {
-		add_option( 'wp_pesticide_settings' );
+		add_option( 'wp_pesticide_settings', add_filter( __NAMESPACE__ . '\\default_display', default_display() ) );
 	}
 
 	/**
@@ -43,7 +51,9 @@ function pesticide_options(){
 	 * @uses https://developer.wordpress.org/reference/functions/register_setting
 	 *
 	 */
-	register_setting( 'wp_pesticide_settings', 'wp_pesticide_settings' );	
+	register_setting( 'wp_pesticide_settings', 'wp_pesticide_settings' );
+	// register_setting( 'wp_pesticide_settings', 'pesticide_outline' );
+	// register_setting( 'wp_pesticide_settings', 'pesticide_depth' );
 }
 
 /**
@@ -65,7 +75,7 @@ add_action( 'admin_init', __NAMESPACE__ . '\\pesticide_options' );
 function outline( $args ){
 	$options = get_option('wp_pesticide_settings');
 
-	$html = '<input type="checkbox" id="pesticide_outline" name="wp_pesticide_settings[pesticide_outline]" value="1" ' . checked(1, $options['pesticide_outline'], false) . '/>';
+	$html = '<input type="checkbox" id="pesticide_outline" name="sandbox_theme_display_options[pesticide_outline]" value="1" ' . checked( 1, isset( $options['pesticide_outline'] ) ? $options['pesticide_outline'] : 0, false ) . '/>'; 
 
 	$html .= '<label for="pesticide_outline"> '  . $args[0] . '</label>';
 
@@ -75,7 +85,7 @@ function outline( $args ){
 function depth( $args ){
 	$options = get_option( 'wp_pesticide_settings' );
 
-	$html = '<input type="checkbox" id="pesticide_depth" name="wp_pesticide_settings[pesticide_depth]" value="1" ' . checked(1, $options['pesticide_depth'], false) . '/>';
+	$html = '<input type="checkbox" id="pesticide_depth" name="sandbox_theme_display_options[pesticide_depth]" value="1" ' . checked( 1, isset( $options['pesticide_depth'] ) ? $options['pesticide_depth'] : 0, false ) . '/>'; 
 
 	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
 

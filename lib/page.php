@@ -15,8 +15,8 @@ function page_display(){ ?>
 		<?php settings_errors(); ?>
 
 		<form method="post" action="options.php">
-			<?php settings_fields( 'sandbox_theme_display_options' ); ?>
-			<?php do_settings_sections( 'sandbox_theme_display_options' ); ?>
+			<?php settings_fields( 'wp_pesticide_settings' ); ?>
+			<?php do_settings_sections( 'wp_pesticide_settings' ); ?>
 			<?php submit_button(); ?>
 		</form>
 		

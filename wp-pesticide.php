@@ -49,16 +49,16 @@ function pesticide_options(){
 	add_settings_section( 'setting_section_id', 'Section Title', __NAMESPACE__ . '\\general_options_callback', 'general' );
 
 	/* Register Fields */
-	add_settings_field( 'show_header', 'Setting Title A', __NAMESPACE__ . '\\header_field_callback', 'general', 'setting_section_id', array(
+	add_settings_field( 'pesticide_outline', 'Setting Title A', __NAMESPACE__ . '\\header_field_callback', 'general', 'setting_section_id', array(
 		'This is inside the array'
 	) );
-	add_settings_field( 'show_content', 'Setting Title B', __NAMESPACE__ . '\\content_field_callback', 'general', 'setting_section_id', array(
+	add_settings_field( 'pesticide_depth', 'Setting Title B', __NAMESPACE__ . '\\content_field_callback', 'general', 'setting_section_id', array(
 		'This is inside the array'
 	) );
 
 	/* Register Settings */
-	register_setting( 'general', 'show_header' );
-	register_setting( 'general', 'show_content' );
+	register_setting( 'general', 'pesticide_outline' );
+	register_setting( 'general', 'pesticide_depth' );
 	
 	
 }
@@ -69,17 +69,17 @@ function general_options_callback(){
 }
 
 function header_field_callback( $args ){
-	$html = '<input type="checkbox" id="show_header" name="show_header" value="1"' . checked(1, get_option('show_header'), false) . '/>';
+	$html = '<input type="checkbox" id="pesticide_outline" name="pesticide_outline" value="1"' . checked(1, get_option('pesticide_outline'), false) . '/>';
 
-	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
+	$html .= '<label for="pesticide_outline"> '  . $args[0] . '</label>';
 
 	echo $html;
 }
 
 function content_field_callback( $args ){
-	$html = '<input type="checkbox" id="show_header" name="show_header" value="1"' . checked(1, get_option('show_header'), false) . '/>';
+	$html = '<input type="checkbox" id="pesticide_depth" name="pesticide_depth" value="1"' . checked(1, get_option('pesticide_depth'), false) . '/>';
 
-	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
+	$html .= '<label for="pesticide_depth"> '  . $args[0] . '</label>';
 
 	echo $html;
 }

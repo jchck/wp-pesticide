@@ -1,6 +1,6 @@
 <?php
 
-namespace jchck\pesticide\options;
+namespace jchck\pesticide\settings;
 
 /**
  *

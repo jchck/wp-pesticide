@@ -48,6 +48,47 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\depth');
  *
  */
 function build_page(){
-	add_management_page( 'WP Pesticide', 'WP Pesticide', 'manage_options', 'wp-pesticide', __NAMESPACE__ . '\\build_page' );
+	add_management_page( 'WP Pesticide', 'WP Pesticide', 'manage_options', 'wp_pesticide', __NAMESPACE__ . '\\build_page' );
 }
 add_action( 'admin_menu', __NAMESPACE__ . '\\build_page' );
+
+
+function pesticide_options(){
+	/* Register section */
+	add_settings_section( 'setting_section_id', 'Section Title', __NAMESPACE__ . '\\general_options_callback', 'general' );
+
+	/* Register Fields */
+	add_settings_field( 'show_header', 'Setting Title A', __NAMESPACE__ . '\\header_field_callback', 'general', 'setting_section_id', array(
+		'This is inside the array'
+	) );
+	add_settings_field( 'show_content', 'Setting Title B', __NAMESPACE__ . '\\content_field_callback', 'general', 'setting_section_id', array(
+		'This is inside the array'
+	) );
+
+	/* Register Settings */
+	register_setting( 'general', 'show_header' );
+	register_setting( 'general', 'show_content' );
+	
+	
+}
+add_action( 'admin_init', __NAMESPACE__ . '\\pesticide_options' );
+
+function general_options_callback(){
+	echo '<p>Section title, etc</p>';
+}
+
+function header_field_callback( $args ){
+	$html = '<input type="checkbox" id="show_header" name="show_header" value="1"' . checked(1, get_option('show_header'), false) . '/>';
+
+	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
+
+	echo $html;
+}
+
+function content_field_callback( $args ){
+	$html = '<input type="checkbox" id="show_header" name="show_header" value="1"' . checked(1, get_option('show_header'), false) . '/>';
+
+	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
+
+	echo $html;
+}

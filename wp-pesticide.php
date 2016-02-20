@@ -24,6 +24,6 @@ namespace jchck\pesticide;
  * @uses http://php.net/manual/en/function.require-once.php
  *
  */
-require_once __DIR__ . '/lib/settings.php';
-require_once __DIR__ . '/lib/page.php';
-require_once __DIR__ . '/lib/styles.php';
+require_once __DIR__ . '/lib/settings.php';			// This is where we build settings
+require_once __DIR__ . '/lib/page.php';				// This is where we put the settings
+require_once __DIR__ . '/lib/styles.php';			// This is where we enqueue the requested stylesheets

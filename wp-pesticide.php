@@ -25,4 +25,5 @@ namespace jchck\pesticide;
  *
  */
 require_once __DIR__ . '/lib/options.php';
+require_once __DIR__ . '/lib/page.php';
 require_once __DIR__ . '/lib/styles.php';

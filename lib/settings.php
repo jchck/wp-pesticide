@@ -38,12 +38,8 @@ function pesticide_options(){
 	 * @uses https://developer.wordpress.org/reference/functions/add_settings_field
 	 *
 	 */
-	add_settings_field( 'pesticide_outline', 'Add Outlining', __NAMESPACE__ . '\\outline', 'wp_pesticide_settings', 'wp_pesticide_id', array(
-		'This is inside the array'
-	) );
-	add_settings_field( 'pesticide_depth', 'Add Depth', __NAMESPACE__ . '\\depth', 'wp_pesticide_settings', 'wp_pesticide_id', array(
-		'This is inside the array'
-	) );
+	add_settings_field( 'pesticide_outline', __('Add Outlining', 'jchck'), __NAMESPACE__ . '\\outline', 'wp_pesticide_settings', 'wp_pesticide_id' );
+	add_settings_field( 'pesticide_depth', __('Add Depth', 'jchck'), __NAMESPACE__ . '\\depth', 'wp_pesticide_settings', 'wp_pesticide_id' );
 
 	/**
 	 *
@@ -77,17 +73,13 @@ function outline( $args ){
 
 	$html = '<input type="checkbox" id="pesticide_outline" name="sandbox_theme_display_options[pesticide_outline]" value="1" ' . checked( 1, isset( $options['pesticide_outline'] ) ? $options['pesticide_outline'] : 0, false ) . '/>'; 
 
-	$html .= '<label for="pesticide_outline"> '  . $args[0] . '</label>';
-
 	echo $html;
 }
 
 function depth( $args ){
 	$options = get_option( 'wp_pesticide_settings' );
 
-	$html = '<input type="checkbox" id="pesticide_depth" name="sandbox_theme_display_options[pesticide_depth]" value="1" ' . checked( 1, isset( $options['pesticide_depth'] ) ? $options['pesticide_depth'] : 0, false ) . '/>'; 
-
-	$html .= '<label for="show_header"> '  . $args[0] . '</label>';
-
+	$html = '<input type="checkbox" id="pesticide_depth" name="sandbox_theme_display_options[pesticide_depth]" value="1" ' . checked( 1, isset( $options['pesticide_depth'] ) ? $options['pesticide_depth'] : 0, false ) . '/>';
+	
 	echo $html;
 }

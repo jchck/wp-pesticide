@@ -16,12 +16,12 @@ function depth(){
 }
 
 
-$options = get_option( 'wp_pesticide_settings' );
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\outline');
 
-if (isset( $options['pesticide_outline'] ) && $options['pesticide_outline'] ) {
-	add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\outline');
-}
 
-if (isset( $options['pesticide_depth'] ) && $options['pesticide_depth'] ) {
-	add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\outline');
-}
+/**
+ *
+ * Uncomment to enque depth support as well
+ *
+ */
+//add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\depth');
